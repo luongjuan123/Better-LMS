@@ -1,0 +1,81 @@
+
+
+src
+└── main
+    └── java
+        └── com
+            └── schoolar
+                └── minilms
+                    │
+                    ├── scr.main.java.com.Main.java                 // Lớp chính chứa hàm main(), khởi chạy ứng dụng
+                    │
+                    ├── model                     // Chứa các lớp định nghĩa đối tượng dữ liệu cốt lõi (Entities/Domain Objects)
+                    │   │                         // Các lớp này tương ứng với UML bạn đã thiết kế.
+                    │   │                         // Thường chỉ chứa thuộc tính, getters/setters, toString, equals, hashCode.
+                    │   ├── user                  // Các lớp liên quan đến người dùng
+                    │   │   ├── User.java         // Lớp trừu tượng User (hoặc NguoiDung)
+                    │   │   ├── Student.java      // Lớp SinhVien
+                    │   │   ├── CourseManager.java// Lớp CourseManager
+                    │   │   ├── Admin.java        // Lớp Admin
+                    │   │   ├── Role.java         // Enum định nghĩa vai trò
+                    │   │   └── Gender.java       // Enum định nghĩa giới tính (GioiTinh)
+                    │   │
+                    │   ├── course                // Các lớp liên quan đến khóa học, bài học
+                    │   │   ├── Course.java       // Lớp KhoaHoc
+                    │   │   ├── Module.java       // Lớp Module (Chương)
+                    │   │   ├── Lesson.java       // Lớp Lesson (Bài học)
+                    │   │   │
+                    │   │   └── material          // Các lớp liên quan đến tài liệu học tập
+                    │   │       ├── Material.java   // Lớp trừu tượng Material
+                    │   │       ├── DocumentMaterial.java
+                    │   │       ├── VideoMaterial.java
+                    │   │       ├── LinkMaterial.java
+                    │   │       ├── TextMaterial.java
+                    │   │       └── MaterialType.java // Enum định nghĩa loại Material
+                    │   │
+                    │   └── assignment            // Các lớp liên quan đến bài tập, chấm điểm
+                    │       ├── Assignment.java   // Lớp BaiTap
+                    │       ├── Submission.java   // Lớp BaiNop
+                    │       └── Grade.java        // Lớp DiemSo
+                    │
+                    ├── view                      // (Hoặc ui, gui) Chứa các lớp liên quan đến giao diện người dùng (GUI)
+                    │   │                         // Nhiệm vụ chính là hiển thị dữ liệu và nhận tương tác từ người dùng.
+                    │   ├── LoginWindow.java
+                    │   ├── MainWindow.java
+                    │   ├── StudentDashboardPanel.java
+                    │   ├── CourseViewPanel.java
+                    │   └── ... (Các thành phần UI khác)
+                    │
+                    ├── controller                // (Tùy chọn, nếu áp dụng MVC/MVP) Chứa các lớp điều khiển
+                    │   │                         // Nhận yêu cầu từ View, gọi Service xử lý, cập nhật View.
+                    │   ├── AuthController.java
+                    │   ├── CourseController.java
+                    │   └── ...
+                    │
+                    ├── service                   // Chứa các lớp xử lý logic nghiệp vụ chính (Business Logic Layer)
+                    │   │                         // Điều phối hoạt động, gọi lớp persistence lấy/lưu dữ liệu, thực thi quy tắc.
+                    │   ├── AuthenticationService.java // Xử lý đăng nhập, đăng xuất
+                    │   ├── UserService.java         // Quản lý người dùng (thêm, sửa, xóa...)
+                    │   ├── CourseService.java       // Xử lý logic liên quan khóa học, module, lesson
+                    │   ├── MaterialService.java     // Xử lý logic tải lên, tải xuống, quản lý material
+                    │   ├── AssignmentService.java   // Xử lý logic bài tập, nộp bài, chấm điểm
+                    │   ├── StorageService.java      // Interface/Implementation cho việc lưu/đọc file thực tế
+                    │   └── ...
+                    │
+                    ├── persistence             // (Hoặc dao, repository, data) Chứa các lớp truy cập dữ liệu (Data Access Layer)
+                    │   │                         // Chịu trách nhiệm giao tiếp với nơi lưu trữ (file, CSDL).
+                    │   ├── dao                   // Các interface định nghĩa phương thức truy cập dữ liệu (VD: findById, save)
+                    │   │   ├── UserDao.java
+                    │   │   ├── CourseDao.java
+                    │   │   └── ...
+                    │   │
+                    │   └── impl                  // Các lớp triển khai cụ thể việc truy cập dữ liệu
+                    │       ├── UserFileDao.java    // Ví dụ: Đọc/ghi User từ file
+                    │       ├── CourseFileDao.java  // Ví dụ: Đọc/ghi Course từ file
+                    │       ├── UserDbDao.java      // Ví dụ: Tương tác với bảng User trong CSDL
+                    │       └── ...
+                    │
+                    └── util                      // Chứa các lớp tiện ích dùng chung, không thuộc về một nghiệp vụ cụ thể nào
+                        ├── PasswordUtils.java     // Tiện ích băm/kiểm tra mật khẩu
+                        ├── DateUtils.java         // Tiện ích xử lý ngày tháng
+                        └── FileUtils.java         // Tiện ích đọc/ghi file cơ bản
