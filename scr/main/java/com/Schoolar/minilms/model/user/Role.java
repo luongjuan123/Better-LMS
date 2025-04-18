@@ -11,10 +11,6 @@ public enum Role {
         this.description = description;
     }
 
-    /**
-     * Lấy mô tả của vai trò.
-     * @return Mô tả vai trò.
-     */
     public String getDescription() {
         return description;
     }
